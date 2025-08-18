@@ -7,15 +7,6 @@ pipeline {
     }
 
     stages {
-        stage('Check Versions') {
-            steps {
-                sh 'java -version'
-                sh 'mvn -v'
-                sh 'which javac'
-                sh 'echo $JAVA_HOME'
-            }
-        }
-
         stage('Checkout') {
             steps {
                 git branch: 'master', url: 'https://github.com/shailahir/my-blog.git'
@@ -33,12 +24,6 @@ pipeline {
                 sh 'mvn test'
             }
         }
-
-//         stage('Archive Artifacts') {
-//             steps {
-//                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-//             }
-//         }
 
         stage('Deploy') {
             steps {
