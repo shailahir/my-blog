@@ -44,13 +44,8 @@ pipeline {
             steps {
                 sh '''
                     mv target/my-blog-0.0.1-SNAPSHOT.jar target/my-blog.jar
-
-                    # Copy JAR into app directory
-                    cp target/my-blog.jar /opt/apps/my-blog/
-
-                    # Call local deploy script
-                    bash /opt/apps/my-blog/deploy.sh
                 '''
+                sh 'sudo /usr/local/bin/deploy-myblog.sh'
             }
         }
     }
