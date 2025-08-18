@@ -43,6 +43,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
+                    mv target/my-blog-0.0.1-SNAPSHOT.jar target/my-blog.jar
+
                     # Copy JAR into app directory
                     cp target/my-blog.jar /opt/apps/my-blog/
 
