@@ -7,6 +7,13 @@ pipeline {
     }
 
     stages {
+        stage('Check Versions') {
+            steps {
+                sh 'java -version'
+                sh 'mvn -v'
+            }
+        }
+
         stage('Checkout') {
             steps {
                 git branch: 'master', url: 'https://github.com/shailahir/my-blog.git'
